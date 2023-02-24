@@ -62,7 +62,7 @@ class UserAuth extends Controller
             'password' => 'required|min:5',
         ]);
         $details = $request->only('email', 'password');
-
+        
         if (Auth::attempt($details)) {
             return redirect()->intended('/dashboard');
         }
@@ -104,7 +104,6 @@ class UserAuth extends Controller
         } else {
             return back()->with('error', 'Invalid verification code.');
         }
-
     }
     public function verifyPageCheck(Request $request){
         if($request->session()->get('verification_code')){

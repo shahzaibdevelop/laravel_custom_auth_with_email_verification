@@ -30,9 +30,7 @@ Route::group(['middleware'=>"auth"],function(){
     });
     Route::get('logout', [UserAuth::class, 'logout']);
 });
-// Route::get('/verify-email-page',function(){
-// return view('verify-email-page');
-// });
+
 Route::get('/verify-email-page',[UserAuth::class,'verifyPageCheck']);
 
 Route::post('/verify-email', [UserAuth::class,'verifyEmail']);
