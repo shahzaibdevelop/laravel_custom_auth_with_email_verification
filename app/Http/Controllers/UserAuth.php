@@ -52,10 +52,6 @@ class UserAuth extends Controller
        
         return view('verify-email-page',get_defined_vars());
         //Email Verify Code End 
-        
-
-
-        
 
       
     }
@@ -86,12 +82,7 @@ class UserAuth extends Controller
            $request->validate([
             'verifyCode'=> 'required',
            ]);
-        //    if($request->session()->get('verification_code')){
-
-        //    }
-        //    else{
-        //     return redirect('signup');
-        //    }
+    
 
         
         $verificationCode = $request->verifyCode;
@@ -114,9 +105,14 @@ class UserAuth extends Controller
             return back()->with('error', 'Invalid verification code.');
         }
 
-
-
-
+    }
+    public function verifyPageCheck(Request $request){
+        if($request->session()->get('verification_code')){
+            return view('verify-email-page');
+        }
+        else{
+            return redirect('login');
+        }
     }
     
 }

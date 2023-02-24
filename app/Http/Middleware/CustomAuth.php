@@ -15,13 +15,7 @@ class CustomAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check()){
-            redirect('/login');
-         }
-         else
-         {
-                redirect('/dashboard');
-         }
+        
         return $next($request);
     }
 }
