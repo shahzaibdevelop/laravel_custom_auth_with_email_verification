@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerifyEmail;
-
+use App\Jobs\SendVerificationEmail;
 class UserAuth extends Controller 
 {
     public function loginPage(){
@@ -48,12 +48,15 @@ class UserAuth extends Controller
             'subject'=>'Verify Your Email',
         ];
         
-        Mail::to($user->email)->send(new VerifyEmail($data));
+        // Mail::to($user->email)->send(new VerifyEmail($data));
+        dispatch(new SendVerificationEmail($user, $code,$data));
+
+
+        
        
         return view('verify-email-page',get_defined_vars());
         //Email Verify Code End 
-
-      
+  
     }
     public function login(Request $request){
        
@@ -94,15 +97,13 @@ class UserAuth extends Controller
             $user = User::find($userId);
             $user->email_verified_at = now();
             $user->save();
-    
-          
-            $request->session()->forget('verification_code');
+             $request->session()->forget('verification_code');
             $request->session()->forget('user_email');
             $request->session()->forget('user_id');
     
             return redirect('login')->with('success', 'Email verification successful!');
         } else {
-            return back()->with('error', 'Invalid verification code.');
+            return redirect('signup')->with('error', 'Invalid verification code.');
         }
     }
     public function verifyPageCheck(Request $request){

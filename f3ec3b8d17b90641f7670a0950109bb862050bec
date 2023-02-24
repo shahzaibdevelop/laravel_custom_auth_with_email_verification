@@ -1,0 +1,17 @@
+[33mcommit 10167dfa21a3e863bf6ebe8091bf0e4970d30b6e[m[33m ([m[1;36mHEAD -> [m[1;32mimplementing_queue[m[33m, [m[1;32mrestricting_email_verify_page[m[33m)[m
+Author: Shahzaib Hassan <shahzaibdevelop@gmail.com>
+Date:   Fri Feb 24 09:42:29 2023 -0100
+
+    Email Verification Completed
+
+[33mcommit 182ba095be98771044f8e32fc9fa551644ef586d[m[33m ([m[1;31morigin/restricting_email_verify_page[m[33m)[m
+Author: Shahzaib Hassan <shahzaibdevelop@gmail.com>
+Date:   Fri Feb 24 05:45:39 2023 -0100
+
+    Fixed Verify Email Page Checks
+
+[33mcommit f3ec3b8d17b90641f7670a0950109bb862050bec[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Shahzaib Hassan <shahzaibdevelop@gmail.com>
+Date:   Fri Feb 24 05:22:06 2023 -0100
+
+    Custom Authentication with Email Verification
